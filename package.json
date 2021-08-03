@@ -4,7 +4,7 @@
   "description": "Sell waifus",
   "main": "mod.ts",
   "scripts": {
-    "start": "deno run --allow-env --allow-read --allow-net src/mod.ts"
+    "start": "deno run --allow-env --allow-read --allow-net mod.ts"
   },
   "repository": "git@github.com:Loliticos/remmy-ts.git",
   "author": "Loliticos <familiadojorge@outlook.com>",
