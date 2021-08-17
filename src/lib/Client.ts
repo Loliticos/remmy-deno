@@ -1,9 +1,11 @@
-import { Client, GatewayIntents } from 'https://deno.land/x/harmony/mod.ts'
-import ListenerHandler from "../handlers/ListenerHandler.ts"
+import { Client, GatewayIntents } from 'https://deno.land/x/harmony/mod.ts';
+import EventHandler from "../handlers/EventHandler.ts";
+import CommandHandler from "../handlers/CommandHandler.ts"
 import Database from "./database/database.ts";
 
 export default class Remmy extends Client {
-  public listeners = new ListenerHandler(this);
+  public commands = new CommandHandler(this);
+  public events = new EventHandler(this);
   public database: Database;
 
   public constructor(database: Database) {
