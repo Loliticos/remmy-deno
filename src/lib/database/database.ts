@@ -10,12 +10,16 @@ export default class Database {
   }
 
   async connect() {
+    /*
     const connection = new PostgresConnector({
       database: 'production',
       host: 'database',
       username: 'remmy',
       password: 'remmyiscool'
-    });
+    });*/
+    const connection = new PostgresConnector({
+      uri: "postgresql://loliticos:h_eCqKOFOiNTxH3S@free-tier.gcp-us-central1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=$HOME/.postgresql/root.crt&options=--cluster%3Dthick-rhino-2985"
+     })
 
     this.database = new DB(connection);
     this.database.link([User]);
@@ -24,7 +28,7 @@ export default class Database {
   }
 
   async create(id: string) {
-    const user = await this.get(id);
+    const user = await this.users.find(id);
 
     if (user) return user;
     else return await this.users.create({ id });
@@ -32,9 +36,9 @@ export default class Database {
 
   async get(id: string) {
     // EVENTUALMENTE USAR CACHE
-    const user = await this.users.find(id).get?.();
+    const user = await this.users.find(id);
 
-    return user?.[0];
+    return user;
   }
 
   async update(id: string, data: any) {
