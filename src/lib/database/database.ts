@@ -18,7 +18,7 @@ export default class Database {
       password: 'remmyiscool'
     });*/
     const connection = new PostgresConnector({
-      uri: "postgresql://loliticos:h_eCqKOFOiNTxH3S@free-tier.gcp-us-central1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=$HOME/.postgresql/root.crt&options=--cluster%3Dthick-rhino-2985"
+      uri: "postgresql:/"
      })
 
     this.database = new DB(connection);
